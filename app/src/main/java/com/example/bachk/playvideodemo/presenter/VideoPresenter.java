@@ -16,7 +16,7 @@ import java.util.List;
  * Created by tho xinh dep on 10/16/2017.
  */
 
-public class VideoPresenter implements IeVideoPresenter, IeVideoModel.IeFinishLoadAllData {
+public class VideoPresenter implements IeVideoPresenter, IeVideoModel.IeFinishLoadAllData, IeVideoModel.IeFinishLoadMoreData {
 
     private IeMainActivity ieMain;
     private IeVideoModel ieVideoModel;
@@ -40,6 +40,11 @@ public class VideoPresenter implements IeVideoPresenter, IeVideoModel.IeFinishLo
         ieMain.playMediaVideo(videoView);
     }
 
+    @Override
+    public void loadMoreData(List<VideoEntity> listVideo) {
+        ieVideoModel.loadMoreData(listVideo,this);
+    }
+
 
     @Override
     public void finishLoadData(List<VideoEntity> listVideo) {
@@ -49,5 +54,15 @@ public class VideoPresenter implements IeVideoPresenter, IeVideoModel.IeFinishLo
     @Override
     public void errorLoadData(String errorMes) {
         ieMain.errorLoadAllData(errorMes);
+    }
+
+    @Override
+    public void finishLoadMoreData(List<VideoEntity> listVideo) {
+        ieMain.finishLoadMoreData(listVideo);
+    }
+
+    @Override
+    public void notGetMoreData() {
+        ieMain.notGetMoreData();
     }
 }

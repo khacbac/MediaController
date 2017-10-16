@@ -15,4 +15,7 @@ public interface IeMainActivity {
     void errorLoadAllData(String errorMes);
 
     void playMediaVideo(VideoView videoView);
+
+    void finishLoadMoreData(List<VideoEntity> list);
+    void notGetMoreData();
 }

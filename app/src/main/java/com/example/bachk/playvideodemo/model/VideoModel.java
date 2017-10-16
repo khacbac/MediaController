@@ -50,4 +50,28 @@ public class VideoModel implements IeVideoModel {
         });
 
     }
+
+    @Override
+    public void loadMoreData(final List<VideoEntity> list, final IeFinishLoadMoreData loadMoreData) {
+        Call<VideoResponse> onGetData = ApiUtils.getApiServer().getAllData(list.size() - 1);
+        onGetData.enqueue(new Callback<VideoResponse>() {
+            @Override
+            public void onResponse(Call<VideoResponse> call, Response<VideoResponse> response) {
+                VideoResponse res = response.body();
+                if (res != null) {
+                    List<VideoEntity> listVideo = res.getListVideo();
+                    if (!listVideo.isEmpty()) {
+                        loadMoreData.finishLoadMoreData(listVideo);
+                    } else {
+                        loadMoreData.notGetMoreData();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoResponse> call, Throwable t) {
+                loadMoreData.notGetMoreData();
+            }
+        });
+    }
 }

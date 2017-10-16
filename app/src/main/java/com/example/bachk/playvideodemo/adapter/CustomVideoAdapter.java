@@ -23,6 +23,9 @@ public class CustomVideoAdapter extends RecyclerView.Adapter<CustomVideoAdapter.
     private static final String TAG = CustomVideoAdapter.class.getSimpleName();
     private List<VideoEntity> listVideo = new ArrayList<>();
     private IeOnItemClickListener itemClickListener;
+    private OnLoadMoreListener loadMoreListener;
+    boolean isLoading = false;
+    boolean isMoreDataAvailable = true;
 
     public CustomVideoAdapter() {
     }
@@ -48,6 +51,11 @@ public class CustomVideoAdapter extends RecyclerView.Adapter<CustomVideoAdapter.
                 itemClickListener.onItemClick(position, entity.getLink());
             }
         });
+
+        if (position >= getItemCount() - 1 && isMoreDataAvailable && !isLoading && loadMoreListener != null) {
+            isLoading = true;
+            loadMoreListener.onLoadMore(listVideo);
+        }
     }
 
     @Override
@@ -65,10 +73,12 @@ public class CustomVideoAdapter extends RecyclerView.Adapter<CustomVideoAdapter.
         }
     }
 
-    public void setListVideo(List<VideoEntity> listVideo) {
-        this.listVideo = listVideo;
+    public void addListVideo(List<VideoEntity> listVideo) {
+        this.listVideo.addAll(listVideo);
         notifyDataSetChanged();
+        isLoading = false;
     }
+
 
     public interface IeOnItemClickListener {
         void onItemClick(int position, String link);
@@ -76,5 +86,17 @@ public class CustomVideoAdapter extends RecyclerView.Adapter<CustomVideoAdapter.
 
     public void setOnCustomItemClickListener(IeOnItemClickListener listener) {
         this.itemClickListener = listener;
+    }
+
+    public interface OnLoadMoreListener{
+        void onLoadMore(List<VideoEntity> listVideo);
+    }
+
+    public void setLoadMoreListener(OnLoadMoreListener loadMoreListener) {
+        this.loadMoreListener = loadMoreListener;
+    }
+
+    public void setMoreDataAvailable(boolean moreDataAvailable) {
+        isMoreDataAvailable = moreDataAvailable;
     }
 }

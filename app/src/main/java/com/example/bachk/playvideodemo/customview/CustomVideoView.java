@@ -52,13 +52,15 @@ public class CustomVideoView extends LinearLayout {
     }
 
     public void setTxtTime(String videoUrl) {
-        FFmpegMediaMetadataRetriever mFFmpegMediaMetadataRetriever = new FFmpegMediaMetadataRetriever();
-        mFFmpegMediaMetadataRetriever.setDataSource(videoUrl);
-        String mVideoDuration =  mFFmpegMediaMetadataRetriever .extractMetadata(FFmpegMediaMetadataRetriever .METADATA_KEY_DURATION);
-        long mTimeInMilliseconds= Long.parseLong(mVideoDuration);
-        long minus = mTimeInMilliseconds / 60000;
-        long second = (mTimeInMilliseconds % 60000) / 1000;
-        customImage.setTxtTime(""+minus + ":" + (second < 10 ? ("0" + second) : second));
+        if (!videoUrl.contains("youtube")) {
+            FFmpegMediaMetadataRetriever mFFmpegMediaMetadataRetriever = new FFmpegMediaMetadataRetriever();
+            mFFmpegMediaMetadataRetriever.setDataSource(videoUrl);
+            String mVideoDuration =  mFFmpegMediaMetadataRetriever .extractMetadata(FFmpegMediaMetadataRetriever .METADATA_KEY_DURATION);
+            long mTimeInMilliseconds= Long.parseLong(mVideoDuration);
+            long minus = mTimeInMilliseconds / 60000;
+            long second = (mTimeInMilliseconds % 60000) / 1000;
+            customImage.setTxtTime(""+minus + ":" + (second < 10 ? ("0" + second) : second));
+        }
     }
 
     public void setBackGroundImage(String url) {
