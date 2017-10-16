@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton android:id="@+id/prev"
+        style="@android:style/MediaButton.Previous"
+        android:contentDescription="@string/description" />
+
+    <ImageButton android:id="@+id/rew"
+        style="@android:style/MediaButton.Rew"
+        android:contentDescription="@string/description" />
+
+    <ImageButton android:id="@+id/pause"
+        style="@android:style/MediaButton.Play"
+        android:contentDescription="@string/description" />
+
+    <ImageButton android:id="@+id/ffwd"
+        style="@android:style/MediaButton.Ffwd"
+        android:contentDescription="@string/description" />
+
+    <ImageButton android:id="@+id/next"
+        style="@android:style/MediaButton.Next"
+        android:contentDescription="@string/description" />
+
+</merge>
