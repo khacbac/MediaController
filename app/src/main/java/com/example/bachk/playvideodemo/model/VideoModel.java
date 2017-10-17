@@ -1,21 +1,9 @@
 package com.example.bachk.playvideodemo.model;
 
-import android.util.Log;
-
 import com.example.bachk.playvideodemo.entity.VideoEntity;
-import com.example.bachk.playvideodemo.helper.ApiServer;
 import com.example.bachk.playvideodemo.helper.ApiUtils;
 import com.example.bachk.playvideodemo.helper.VideoResponse;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

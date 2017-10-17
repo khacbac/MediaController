@@ -1,8 +1,7 @@
 package com.example.bachk.playvideodemo.view;
 
-import android.widget.VideoView;
-
 import com.example.bachk.playvideodemo.entity.VideoEntity;
+import com.example.bachk.playvideodemo.fragment.VideoViewFragment;
 
 import java.util.List;
 
@@ -14,8 +13,9 @@ public interface IeMainActivity {
     void finishLoadAllData(List<VideoEntity> listVideo);
     void errorLoadAllData(String errorMes);
 
-    void playMediaVideo(VideoView videoView);
-
     void finishLoadMoreData(List<VideoEntity> list);
     void notGetMoreData();
+
+    void startLoadMediaVideo(VideoViewFragment videoViewFragment);
+    void startLoadYoutubeVideo(String ytId);
 }

@@ -1,14 +1,13 @@
 package com.example.bachk.playvideodemo.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bachk.playvideodemo.R;
-import com.example.bachk.playvideodemo.customview.CustomVideoView;
+import com.example.bachk.playvideodemo.customview.CustomRecyclerLayout;
 import com.example.bachk.playvideodemo.entity.VideoEntity;
 
 import java.util.ArrayList;
@@ -65,11 +64,11 @@ public class CustomVideoAdapter extends RecyclerView.Adapter<CustomVideoAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        CustomVideoView layoutView;
+        CustomRecyclerLayout layoutView;
 
         MyViewHolder(View itemView) {
             super(itemView);
-            layoutView = (CustomVideoView) itemView.findViewById(R.id.customVideoView);
+            layoutView = (CustomRecyclerLayout) itemView.findViewById(R.id.videoView);
         }
     }
 

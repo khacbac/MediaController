@@ -1,9 +1,9 @@
 package com.example.bachk.playvideodemo.presenter;
 
 import android.content.Context;
-import android.widget.VideoView;
 
 import com.example.bachk.playvideodemo.entity.VideoEntity;
+import com.example.bachk.playvideodemo.view.MainActivity;
 
 import java.util.List;
 
@@ -13,7 +13,10 @@ import java.util.List;
 
 public interface IeVideoPresenter {
     void loadAllData();
-    void playMediaVideo(VideoView videoView, String url, Context context);
 
     void loadMoreData(List<VideoEntity> listVideo);
+
+    void loadVideoFromUrl(String link);
+
+    void shareLink(Context context, String currentLink);
 }

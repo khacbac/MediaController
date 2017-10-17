@@ -38,7 +38,7 @@ public class CustomImage extends RelativeLayout {
     private void initView(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.custom_imageview, this, true);
-
+//        setBackgroundResource(R.drawable.border_top_right_bottom_left);
         imageAvatar = (ImageView) getChildAt(0);
         txtTime = (TextView) getChildAt(1);
     }
